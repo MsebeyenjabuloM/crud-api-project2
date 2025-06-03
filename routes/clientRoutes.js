@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const clientController = require('../controllers/clientController');
+const { createClientValidator, updateClientValidator } = require('../validators/clientValidator');
+
 
 router.get('/', clientController.getAllClients);
 router.get('/:id', clientController.getClientById);

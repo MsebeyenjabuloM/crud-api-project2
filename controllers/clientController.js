@@ -1,7 +1,13 @@
+const { validationResult } = require('express-validator');
 const Client = require('../models/client');
 
 // GET all clients
 exports.getAllClients = async (req, res) => {
+  const errors = validationResult(req);
+if (!errors.isEmpty()) {
+  return res.status(400).json({ errors: errors.array() });
+}
+
   try {
     const clients = await Client.find().populate('enrolledProgram');
     res.json(clients);
@@ -12,6 +18,11 @@ exports.getAllClients = async (req, res) => {
 
 // GET one client
 exports.getClientById = async (req, res) => {
+  const errors = validationResult(req);
+if (!errors.isEmpty()) {
+  return res.status(400).json({ errors: errors.array() });
+}
+
   try {
     const client = await Client.findById(req.params.id).populate('enrolledProgram');
     if (!client) return res.status(404).json({ message: 'Client not found' });
@@ -23,6 +34,11 @@ exports.getClientById = async (req, res) => {
 
 // POST create new client
 exports.createClient = async (req, res) => {
+  const errors = validationResult(req);
+if (!errors.isEmpty()) {
+  return res.status(400).json({ errors: errors.array() });
+}
+
   try {
     const newClient = new Client(req.body);
     const savedClient = await newClient.save();
@@ -34,6 +50,11 @@ exports.createClient = async (req, res) => {
 
 // PUT update client
 exports.updateClient = async (req, res) => {
+  const errors = validationResult(req);
+if (!errors.isEmpty()) {
+  return res.status(400).json({ errors: errors.array() });
+}
+
   try {
     const updatedClient = await Client.findByIdAndUpdate(
       req.params.id,
@@ -49,6 +70,11 @@ exports.updateClient = async (req, res) => {
 
 // DELETE client
 exports.deleteClient = async (req, res) => {
+  const errors = validationResult(req);
+if (!errors.isEmpty()) {
+  return res.status(400).json({ errors: errors.array() });
+}
+
   try {
     const deletedClient = await Client.findByIdAndDelete(req.params.id);
     if (!deletedClient) return res.status(404).json({ message: 'Client not found' });

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const programController = require('../controllers/programController');
+const { createProgramValidator, updateProgramValidator } = require('../validators/programValidator');
+
 
 router.get('/', programController.getAllPrograms);
 router.get('/:id', programController.getProgramById);
