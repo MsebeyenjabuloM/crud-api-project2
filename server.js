@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-dotenv.config();
-
 const clientRoutes = require('./routes/clientRoutes');
 const programRoutes = require('./routes/programRoutes');
 const errorHandler = require('./middleware/errorHandler');
+
+dotenv.config();
 
 const app = express();
 
@@ -25,8 +25,8 @@ app.use(errorHandler);
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB');
-    app.listen(process.env.PORT, () =>
-      console.log(`Server running on port ${process.env.PORT}`)
+    app.listen(process.env.PORT || 5000, () =>
+      console.log(`Server running on port ${process.env.PORT || 5000}`)
     );
   })
   .catch((err) => console.error('MongoDB connection error:', err));
