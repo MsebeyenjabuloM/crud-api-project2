@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const Client = require('../models/client');
 
+
 // GET all clients
 exports.getAllClients = async (req, res) => {
   const errors = validationResult(req);

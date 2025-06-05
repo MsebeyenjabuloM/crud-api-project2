@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator');
 const Program = require('../models/program');
 
 // GET all programs
