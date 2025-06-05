@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const errorHandler = (err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).json({
@@ -9,7 +8,7 @@ const errorHandler = (err, req, res, next) => {
 };
 
 module.exports = errorHandler;
-=======
+
 module.exports = (err, req, res, next) => {
     console.error(err.stack);
     res.status(err.statusCode || 500).json({
@@ -17,4 +16,3 @@ module.exports = (err, req, res, next) => {
     });
   };
   
->>>>>>> 994774dfbb472b3610ddfca40126f90fbbc02c11
