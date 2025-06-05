@@ -100,7 +100,6 @@ router.delete('/:id', deleteClient);
  *       200:
  *         description: Client updated successfully
  */
-router.put('/:id', updateClient);
 
 /**
  * @swagger
@@ -120,4 +119,3 @@ router.put('/:id', updateClient);
 
 
 
-module.exports = router;

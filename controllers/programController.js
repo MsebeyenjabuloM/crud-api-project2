@@ -2,6 +2,11 @@ const Program = require('../models/program');
 
 // GET all programs
 exports.getAllPrograms = async (req, res) => {
+  const errors = validationResult(req);
+if (!errors.isEmpty()) {
+  return res.status(400).json({ errors: errors.array() });
+}
+
   try {
     const programs = await Program.find();
     res.json(programs);
@@ -12,6 +17,11 @@ exports.getAllPrograms = async (req, res) => {
 
 // GET one program
 exports.getProgramById = async (req, res) => {
+  const errors = validationResult(req);
+if (!errors.isEmpty()) {
+  return res.status(400).json({ errors: errors.array() });
+}
+
   try {
     const program = await Program.findById(req.params.id);
     if (!program) return res.status(404).json({ message: 'Program not found' });
@@ -23,6 +33,11 @@ exports.getProgramById = async (req, res) => {
 
 // POST create program
 exports.createProgram = async (req, res) => {
+  const errors = validationResult(req);
+if (!errors.isEmpty()) {
+  return res.status(400).json({ errors: errors.array() });
+}
+
   try {
     const newProgram = new Program(req.body);
     const savedProgram = await newProgram.save();
@@ -34,6 +49,11 @@ exports.createProgram = async (req, res) => {
 
 // PUT update program
 exports.updateProgram = async (req, res) => {
+  const errors = validationResult(req);
+if (!errors.isEmpty()) {
+  return res.status(400).json({ errors: errors.array() });
+}
+
   try {
     const updatedProgram = await Program.findByIdAndUpdate(
       req.params.id,
@@ -49,6 +69,11 @@ exports.updateProgram = async (req, res) => {
 
 // DELETE program
 exports.deleteProgram = async (req, res) => {
+  const errors = validationResult(req);
+if (!errors.isEmpty()) {
+  return res.status(400).json({ errors: errors.array() });
+}
+
   try {
     const deletedProgram = await Program.findByIdAndDelete(req.params.id);
     if (!deletedProgram) return res.status(404).json({ message: 'Program not found' });

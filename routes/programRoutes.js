@@ -84,7 +84,7 @@ router.get('/', getAllPrograms);
  *       200:
  *         description: Program updated successfully
  */
-router.put('/:id', updateProgram);
+
 
 /**
  * @swagger
