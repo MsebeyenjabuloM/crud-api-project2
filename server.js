@@ -3,13 +3,16 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
+const app = express();
+
 const clientRoutes = require('./routes/clientRoutes');
 const programRoutes = require('./routes/programRoutes');
+const { swaggerUi, swaggerSpec } = require('./swagger');
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 const errorHandler = require('./middleware/errorHandler');
 
 dotenv.config();
 
-const app = express();
 
 app.use(cors());
 app.use(express.json());
