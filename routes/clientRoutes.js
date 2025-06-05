@@ -118,4 +118,5 @@ router.delete('/:id', deleteClient);
  */
 
 
+module.exports = router;
 
